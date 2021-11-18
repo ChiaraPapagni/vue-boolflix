@@ -1,11 +1,11 @@
 <template>
   <div class="movies">
-    <SearchMovie :searchString="query" @search-movies="search" />
+    <Search :searchString="query" @search-movies="search" />
 
     <div class="movie" v-for="movie in movies" :key="movie.id">
       <h3>{{ movie.title }}</h3>
       <h3>{{ movie.original_title }}</h3>
-      <p>{{ movie.original_languag }}</p>
+      <LangFlag :iso="movie.original_language" :squared="false" />
       <p>{{ movie.vote_average }}</p>
     </div>
     <!-- /.movie -->
@@ -15,11 +15,13 @@
 
 <script>
 import axios from "axios";
-import SearchMovie from "./SearchMovie.vue";
+import Search from "./Search.vue";
+import LangFlag from "vue-lang-code-flags";
 
 export default {
   components: {
-    SearchMovie,
+    Search,
+    LangFlag,
   },
   data() {
     return {
@@ -30,10 +32,6 @@ export default {
     };
   },
   methods: {
-    search(text) {
-      this.query = text;
-      this.callApi();
-    },
     callApi() {
       axios
         .get(`${this.API_URL}${this.API_KEY}&query=${this.query}`)
@@ -43,6 +41,10 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    search(text) {
+      this.query = text;
+      this.callApi();
     },
   },
 };
