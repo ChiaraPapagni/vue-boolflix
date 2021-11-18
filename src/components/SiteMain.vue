@@ -1,6 +1,6 @@
 <template>
   <main id="site_main">
-    <Cards />
+    <Cards :items="items" />
   </main>
   <!-- /#site_main -->
 </template>
@@ -11,6 +11,9 @@ import Cards from "./Cards.vue";
 export default {
   components: {
     Cards,
+  },
+  props: {
+    items: Array,
   },
 };
 </script>

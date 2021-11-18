@@ -1,7 +1,5 @@
 <template>
   <div class="cards">
-    <Search :searchString="query" @search-items="search" />
-
     <div class="item" v-for="(item, i) in items" :key="i">
       <img
         :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
@@ -51,44 +49,9 @@
 </template>
 
 <script>
-import axios from "axios";
-import Search from "./Search.vue";
-
 export default {
-  components: {
-    Search,
-  },
-  data() {
-    return {
-      items: [],
-      API_URL: "https://api.themoviedb.org/3/search/",
-      API_KEY: "api_key=2424eb37f31271f5c92911aca0fd84c2",
-      query: "",
-    };
-  },
-  methods: {
-    callApi() {
-      axios
-        .get(`${this.API_URL}movie?${this.API_KEY}&query=${this.query}`)
-        .then((r) => {
-          this.items = r.data.results;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-      axios
-        .get(`${this.API_URL}tv?${this.API_KEY}&query=${this.query}`)
-        .then((r) => {
-          this.items = r.data.results;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    search(text) {
-      this.query = text;
-      this.callApi();
-    },
+  props: {
+    items: Array,
   },
 };
 </script>
