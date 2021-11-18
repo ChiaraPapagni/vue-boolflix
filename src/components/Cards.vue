@@ -30,10 +30,13 @@
       <!-- /.language -->
 
       <div class="rating">
-        <span v-for="(vote, i) in mathCeil(item.vote_average)" :key="i">
+        <span v-for="(vote, i) in mathCeil(item.vote_average)" :key="'fas' + i">
           <font-awesome-icon :icon="['fas', 'star']" />
         </span>
-        <span v-for="(vote, i) in 5 - mathCeil(item.vote_average)" :key="i">
+        <span
+          v-for="(vote, i) in 5 - mathCeil(item.vote_average)"
+          :key="'far' + i"
+        >
           <font-awesome-icon :icon="['far', 'star']" />
         </span>
         <p>{{ mathCeil(item.vote_average) }}</p>
