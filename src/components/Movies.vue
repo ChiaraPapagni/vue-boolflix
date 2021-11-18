@@ -2,7 +2,7 @@
   <div class="movies">
     <SearchMovie :searchString="query" @search-movies="search" />
 
-    <div class="movie" v-for="(movie, i) in getFilteredMovies" :key="i">
+    <div class="movie" v-for="movie in movies" :key="movie.id">
       <h3>{{ movie.title }}</h3>
       <h3>{{ movie.original_title }}</h3>
       <p>{{ movie.original_languag }}</p>
@@ -29,13 +29,10 @@ export default {
       query: "",
     };
   },
-  mounted() {
-    this.callApi();
-  },
   methods: {
     search(text) {
       this.query = text;
-      console.log(this.query);
+      this.callApi();
     },
     callApi() {
       axios
@@ -46,13 +43,6 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    },
-  },
-  computed: {
-    getFilteredMovies() {
-      return this.movies.filter((movie) => {
-        return movie.title.includes(this.query);
-      });
     },
   },
 };
