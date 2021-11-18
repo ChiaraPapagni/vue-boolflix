@@ -30,6 +30,12 @@
       <!-- /.language -->
 
       <div class="rating">
+        <span v-for="(vote, i) in mathCeil(item.vote_average)" :key="i">
+          <font-awesome-icon :icon="['fas', 'star']" />
+        </span>
+        <span v-for="(vote, i) in 5 - mathCeil(item.vote_average)" :key="i">
+          <font-awesome-icon :icon="['far', 'star']" />
+        </span>
         <p>{{ mathCeil(item.vote_average) }}</p>
       </div>
       <!-- /.rating -->
@@ -42,12 +48,10 @@
 <script>
 import axios from "axios";
 import Search from "./Search.vue";
-//import LangFlag from "vue-lang-code-flags";
 
 export default {
   components: {
     Search,
-    //LangFlag,
   },
   data() {
     return {
