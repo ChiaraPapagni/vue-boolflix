@@ -3,6 +3,10 @@
     <Search :searchString="query" @search-items="search" />
 
     <div class="item" v-for="(item, i) in items" :key="i">
+      <img
+        :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
+        :alt="item.name || item.title"
+      />
       <h3>{{ item.name || item.title }}</h3>
       <h3>{{ item.original_title || item.original_name }}</h3>
       <LangFlag :iso="item.original_language" :squared="false" />
