@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <input v-model="searchString" type="search" placeholder="Search a movie" />
-    <button @click="$emit('search-movies', searchString)">Search</button>
+    <button @click="$emit('search-items', searchString)">Search</button>
   </div>
   <!-- /.search -->
 </template>

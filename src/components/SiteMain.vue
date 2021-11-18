@@ -1,16 +1,16 @@
 <template>
   <main id="site_main">
-    <Movies />
+    <Cards />
   </main>
   <!-- /#site_main -->
 </template>
 
 <script>
-import Movies from "./Movies.vue";
+import Cards from "./Cards.vue";
 
 export default {
   components: {
-    Movies,
+    Cards,
   },
 };
 </script>
