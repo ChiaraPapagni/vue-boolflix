@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import LangFlag from 'vue-lang-code-flags'
+import FlagIcon from 'vue-flag-icon'
 
-Vue.component('lang-flag', LangFlag)
+Vue.use(FlagIcon);
 
 Vue.config.productionTip = false
 

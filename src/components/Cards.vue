@@ -9,7 +9,22 @@
       />
       <h3>{{ item.name || item.title }}</h3>
       <h3>{{ item.original_title || item.original_name }}</h3>
-      <LangFlag :iso="item.original_language" :squared="false" />
+
+      <span v-if="item.original_language == 'da'">
+        <flag iso="dm" :squared="false" />
+      </span>
+      <span v-else-if="item.original_language == 'en'">
+        <flag iso="gb" :squared="false" />
+      </span>
+      <span v-else-if="item.original_language == 'ja'">
+        <flag iso="jp" :squared="false" />
+      </span>
+      <span v-else-if="item.original_language == 'zh'">
+        <flag iso="cn" :squared="false" />
+      </span>
+      <span v-else>
+        <flag :iso="item.original_language" :squared="false" />
+      </span>
       <p>{{ item.vote_average }}</p>
       <!-- ./item -->
     </div>
@@ -20,12 +35,12 @@
 <script>
 import axios from "axios";
 import Search from "./Search.vue";
-import LangFlag from "vue-lang-code-flags";
+//import LangFlag from "vue-lang-code-flags";
 
 export default {
   components: {
     Search,
-    LangFlag,
+    //LangFlag,
   },
   data() {
     return {
