@@ -1,14 +1,16 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <SiteMain />
+  </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import SiteMain from "./components/SiteMain.vue";
 
 export default {
   name: "App",
   components: {
-    //HelloWorld
+    SiteMain,
   },
 };
 </script>
