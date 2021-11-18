@@ -10,24 +10,31 @@
       <h3>{{ item.name || item.title }}</h3>
       <h3>{{ item.original_title || item.original_name }}</h3>
 
-      <span v-if="item.original_language == 'da'">
-        <flag iso="dm" :squared="false" />
-      </span>
-      <span v-else-if="item.original_language == 'en'">
-        <flag iso="gb" :squared="false" />
-      </span>
-      <span v-else-if="item.original_language == 'ja'">
-        <flag iso="jp" :squared="false" />
-      </span>
-      <span v-else-if="item.original_language == 'zh'">
-        <flag iso="cn" :squared="false" />
-      </span>
-      <span v-else>
-        <flag :iso="item.original_language" :squared="false" />
-      </span>
-      <p>{{ item.vote_average }}</p>
-      <!-- ./item -->
+      <div class="language">
+        <span v-if="item.original_language == 'da'">
+          <flag iso="dm" :squared="false" />
+        </span>
+        <span v-else-if="item.original_language == 'en'">
+          <flag iso="gb" :squared="false" />
+        </span>
+        <span v-else-if="item.original_language == 'ja'">
+          <flag iso="jp" :squared="false" />
+        </span>
+        <span v-else-if="item.original_language == 'zh'">
+          <flag iso="cn" :squared="false" />
+        </span>
+        <span v-else>
+          <flag :iso="item.original_language" :squared="false" />
+        </span>
+      </div>
+      <!-- /.language -->
+
+      <div class="rating">
+        <p>{{ mathCeil(item.vote_average) }}</p>
+      </div>
+      <!-- /.rating -->
     </div>
+    <!-- ./item -->
   </div>
   <!-- /.cards -->
 </template>
@@ -72,6 +79,9 @@ export default {
     search(text) {
       this.query = text;
       this.callApi();
+    },
+    mathCeil(int) {
+      return Math.ceil(int / 2);
     },
   },
 };
