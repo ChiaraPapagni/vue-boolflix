@@ -30,16 +30,18 @@
       <!-- /.language -->
 
       <div class="rating">
-        <span v-for="(vote, i) in mathCeil(item.vote_average)" :key="'fas' + i">
+        <span
+          v-for="(vote, i) in Math.ceil(item.vote_average / 2)"
+          :key="'fas' + i"
+        >
           <font-awesome-icon :icon="['fas', 'star']" />
         </span>
         <span
-          v-for="(vote, i) in 5 - mathCeil(item.vote_average)"
+          v-for="(vote, i) in 5 - Math.ceil(item.vote_average / 2)"
           :key="'far' + i"
         >
           <font-awesome-icon :icon="['far', 'star']" />
         </span>
-        <p>{{ mathCeil(item.vote_average) }}</p>
       </div>
       <!-- /.rating -->
     </div>
@@ -86,9 +88,6 @@ export default {
     search(text) {
       this.query = text;
       this.callApi();
-    },
-    mathCeil(int) {
-      return Math.ceil(int / 2);
     },
   },
 };
