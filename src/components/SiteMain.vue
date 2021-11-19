@@ -1,14 +1,18 @@
 <template>
-  <main id="site_main" class="container">
-    <!-- <h2>Movie</h2> -->
-    <div class="movies clearfix" v-for="movie in movies" :key="movie.id">
-      <Card :item="movie"/>
+  <main id="site_main">
+    <div class="movies clearfix">
+      <h2 v-if="movies.length > 0">Movie</h2>
+      <div class="movie" v-for="movie in movies" :key="movie.id">
+        <Movie :movie="movie" />
+      </div>
     </div>
     <!-- /.movies -->
 
-    <!-- <h2>TV Show</h2> -->
-    <div class="tv_show clearfix" v-for="tv in tvShow" :key="tv.id">
-      <Card :item="tv"/>
+    <div class="tv_show clearfix">
+      <h2 v-if="tvShow.length > 0">TV Show</h2>
+      <div class="tv" v-for="tv in tvShow" :key="tv.id">
+        <TvShow :tv="tv" />
+      </div>
     </div>
     <!-- /.tv_show -->
   </main>
@@ -16,11 +20,13 @@
 </template>
 
 <script>
-import Card from "./Card.vue";
+import Movie from "./Movie.vue";
+import TvShow from "./TvShow.vue";
 
 export default {
   components: {
-    Card,
+    Movie,
+    TvShow,
   },
   props: {
     movies: Array,
@@ -31,14 +37,18 @@ export default {
 
 <style lang="scss">
 #site_main {
-  margin-top: 4rem;
-  .container {
-    width: 95%;
-    margin: auto;
-  }
-  .movies,
-  .tv_show {
+  width: 95%;
+  margin: 4rem auto;
+
+  .movie,
+  .tv {
     float: left;
+  }
+
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 </style>

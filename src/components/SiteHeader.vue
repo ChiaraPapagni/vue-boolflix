@@ -1,5 +1,5 @@
 <template>
-  <header id="site_header" class="container">
+  <header id="site_header">
     <nav class="navbar">
       <div class="left_menu">
         <img src="../assets/img/logo.png" alt="Boolflix" />
