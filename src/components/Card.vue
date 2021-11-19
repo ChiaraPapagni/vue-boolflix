@@ -65,6 +65,12 @@
         </p>
       </div>
       <!-- /.overview -->
+
+      <div class="cast">
+        <a @click="getCast(item.id)">Cast</a>
+        <p v-for="(actor, i) in cast" :key="i">{{ actor.name }}</p>
+      </div>
+      <!-- /.cast -->
     </div>
     <!-- /.info -->
   </div>
@@ -72,9 +78,48 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props: {
     item: Object,
+  },
+  data() {
+    return {
+      API_URL: "https://api.themoviedb.org/3/search/",
+      API_KEY: "api_key=2424eb37f31271f5c92911aca0fd84c2",
+      cast: [],
+      API_URL_CREDIT: "https://api.themoviedb.org/3/",
+    };
+  },
+  mounted() {
+    this.getCast();
+  },
+  methods: {
+    getCast(id) {
+      axios
+        .get(`${this.API_URL_CREDIT}movie/${id}/credits?${this.API_KEY}`)
+        .then((r) => {
+          this.cast = [];
+          for (let i = 0; i < 5; i++) {
+            this.cast.push(r.data.cast[i]);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      axios
+        .get(`${this.API_URL_CREDIT}tv/${id}/credits?${this.API_KEY}`)
+        .then((r) => {
+          this.cast = [];
+          for (let i = 0; i < 5; i++) {
+            this.cast.push(r.data.cast[i]);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
   },
 };
 </script>
@@ -98,23 +143,24 @@ export default {
     top: 0.2rem;
     left: 0.2rem;
     background-color: rgba($color: #000000, $alpha: 0.7);
-    padding: 1rem 0.5rem;
+    padding: 0.7rem 0.5rem;
     color: #eee;
     font-size: 0.85rem;
     opacity: 0;
     transition: opacity 0.3s;
     z-index: 1;
+    overflow-y: hidden;
+
+    a {
+      text-decoration: underline;
+    }
 
     div {
       padding: 0.2rem 0;
     }
+
     .rating {
       color: gold;
-    }
-    .overview {
-      height: 125px;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
 }

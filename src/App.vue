@@ -37,6 +37,9 @@ export default {
         .get(`${this.API_URL}movie?${this.API_KEY}&query=${this.query}`)
         .then((r) => {
           this.movies = r.data.results;
+          console.log(
+            `${this.API_URL}movie?${this.API_KEY}&query=${this.query}`
+          );
         })
         .catch((e) => {
           console.log(e);
