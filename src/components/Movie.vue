@@ -1,5 +1,5 @@
 <template>
-  <div class="movie">
+  <div class="card">
     <div class="poster">
       <img
         v-if="movie.poster_path"
@@ -74,7 +74,7 @@
     </div>
     <!-- /.info -->
   </div>
-  <!-- /.movie -->
+  <!-- /.card -->
 </template>
 
 <script>
@@ -113,50 +113,4 @@ export default {
 </script>
 
 <style lang="scss">
-.movie {
-  cursor: pointer;
-  position: relative;
-
-  img {
-    width: 185px;
-    height: 280px;
-    padding: 0.2rem;
-    object-fit: cover;
-  }
-
-  .info {
-    width: calc(100% - 0.4rem);
-    height: calc(100% - 0.6rem);
-    position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
-    background-color: rgba($color: #000000, $alpha: 0.7);
-    padding: 0.7rem 0.5rem;
-    color: #eee;
-    font-size: 0.85rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 1;
-    overflow-y: hidden;
-    padding-bottom: 0.2rem;
-
-    div {
-      padding: 0.2rem 0;
-    }
-
-    .rating {
-      color: gold;
-    }
-
-    .cast {
-      a {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-.movie:hover::after,
-.movie:hover .info {
-  opacity: 1;
-}
 </style>
