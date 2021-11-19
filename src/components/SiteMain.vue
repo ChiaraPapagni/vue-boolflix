@@ -1,5 +1,5 @@
 <template>
-  <main id="site_main">
+  <main id="site_main" class="container">
     <h2>Movie</h2>
     <div class="movies" v-for="movie in movies" :key="movie.id">
       <Card :item="movie" />

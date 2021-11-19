@@ -7,10 +7,13 @@ Vue.use(FlagIcon)
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faStarSolid, faStarRegular)
+library.add(faStarSolid, faStarRegular, faSearch, faBell, faUser)
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
