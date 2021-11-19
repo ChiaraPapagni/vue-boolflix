@@ -60,7 +60,9 @@
       <!-- /.rating -->
 
       <div class="overview">
-        <p><strong>Overview:</strong> {{ item.overview }}</p>
+        <p>
+          <strong>Overview:</strong> {{ item.overview.substr(0, 100) + "..." }}
+        </p>
       </div>
       <!-- /.overview -->
     </div>
