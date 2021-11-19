@@ -45,6 +45,7 @@ export default {
       margin: 1rem;
       a {
         color: #bbb;
+        font-size: 0.9rem;
         text-decoration: none;
       }
       a.active {
