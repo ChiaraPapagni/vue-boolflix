@@ -67,8 +67,8 @@
       <!-- /.overview -->
 
       <div class="cast">
-        <a @click="getCast(item.id)">Cast</a>
-        <p v-for="(actor, i) in cast" :key="i">{{ actor.name }}</p>
+        <a @click="getCast(item.id)">Cast:</a>
+        <span v-for="(actor, i) in cast" :key="i"> {{ actor.name }}, </span>
       </div>
       <!-- /.cast -->
     </div>
@@ -150,10 +150,7 @@ export default {
     transition: opacity 0.3s;
     z-index: 1;
     overflow-y: hidden;
-
-    a {
-      text-decoration: underline;
-    }
+    padding-bottom: 0.2rem;
 
     div {
       padding: 0.2rem 0;
@@ -161,6 +158,12 @@ export default {
 
     .rating {
       color: gold;
+    }
+
+    .cast {
+      a {
+        text-decoration: underline;
+      }
     }
   }
 }

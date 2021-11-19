@@ -101,6 +101,9 @@ header {
       align-items: center;
 
       .search {
+        display: flex;
+        align-items: center;
+        flex: row nowrap;
         background-color: #111;
         border: 1px solid #fff;
         padding: 0.3rem;
