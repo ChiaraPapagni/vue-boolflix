@@ -1,21 +1,26 @@
 <template>
   <div class="card">
-    <img
-      v-if="item.poster_path"
-      :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
-      :alt="item.name || item.title"
-    />
-    <img
-      v-else
-      src="../assets/img/not-available.png"
-      alt="image not available"
-      width="185px"
-    />
+    <div class="poster">
+      <img
+        v-if="item.poster_path"
+        :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
+        :alt="item.name || item.title"
+      />
+      <img
+        v-else
+        src="../assets/img/not-available.png"
+        alt="image not available"
+      />
+    </div>
+    <!-- /.poster -->
 
     <div class="info">
       <div class="title">
-        <p>Title: {{ item.name || item.title }}</p>
-        <p>Original title: {{ item.original_title || item.original_name }}</p>
+        <p><strong>Title:</strong> {{ item.name || item.title }}</p>
+        <p>
+          <strong>Original title:</strong>
+          {{ item.original_title || item.original_name }}
+        </p>
       </div>
       <!-- /.title -->
 
@@ -55,7 +60,7 @@
       <!-- /.rating -->
 
       <div class="overview">
-        <p>Overview: {{ item.overview }}</p>
+        <p><strong>Overview:</strong> {{ item.overview }}</p>
       </div>
       <!-- /.overview -->
     </div>
@@ -74,9 +79,45 @@ export default {
 
 <style lang="scss">
 .card {
+  cursor: pointer;
+  position: relative;
+
   img {
+    width: 185px;
     height: 280px;
     padding: 0.2rem;
+    object-fit: cover;
   }
+
+  .info {
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.6rem);
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    padding: 1rem 0.5rem;
+    color: #eee;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+
+    div {
+      padding: 0.2rem 0;
+    }
+    .rating {
+      color: gold;
+    }
+    .overview {
+      height: 125px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.card:hover::after,
+.card:hover .info {
+  opacity: 1;
 }
 </style>
