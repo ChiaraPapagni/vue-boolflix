@@ -48,66 +48,78 @@ export default {
 </script>
 
 <style lang="scss">
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.6rem 0;
+@import "../assets/scss/variables.scss";
 
-  .left_menu {
+header {
+  width: 95%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  background-color: $netflix_dark_gray;
+
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0.6rem 0;
 
-    img {
-      width: 100px;
-      margin-right: 1rem;
-    }
+    .left_menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    ul {
-      list-style: none;
-      li {
-        display: inline-block;
+      img {
+        width: 100px;
         margin-right: 1rem;
-        a {
-          color: #ccc;
-          font-size: 0.9rem;
-          text-decoration: none;
-        }
-        a.active {
-          color: #fff;
-        }
-        a:hover {
-          color: #aaa;
+      }
+
+      ul {
+        list-style: none;
+        li {
+          display: inline-block;
+          margin-right: 1rem;
+          a {
+            color: #ccc;
+            font-size: 0.9rem;
+            text-decoration: none;
+          }
+          a.active {
+            color: #fff;
+          }
+          a:hover {
+            color: #aaa;
+          }
         }
       }
     }
-  }
 
-  .right_menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .right_menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    .search {
-      background-color: #111;
-      border: 1px solid #fff;
-      padding: 0.3rem;
-
-      .search_input {
-        width: 180px;
+      .search {
         background-color: #111;
-        border: 1px solid transparent;
-        box-shadow: none;
-        outline: none;
-        color: #fff;
-        font-size: 1rem;
-        padding-left: 0.7rem;
-      }
-    }
+        border: 1px solid #fff;
+        padding: 0.3rem;
 
-    .icon {
-      margin-left: 1rem;
+        .search_input {
+          width: 180px;
+          background-color: #111;
+          border: 1px solid transparent;
+          box-shadow: none;
+          outline: none;
+          color: #fff;
+          font-size: 1rem;
+          padding-left: 0.7rem;
+        }
+      }
+
+      .icon {
+        margin-left: 1rem;
+      }
     }
   }
 }
