@@ -2,6 +2,8 @@
   <div id="app">
     <SiteHeader @search-items="search" />
     <SiteMain :movies="movies" :tvShow="tvShow" />
+    <div class="error" v-if="error !== ''">{{ error }}</div>
+    <!-- /.error -->
   </div>
 </template>
 
@@ -23,28 +25,31 @@ export default {
       API_URL: "https://api.themoviedb.org/3/search/",
       API_KEY: "api_key=2424eb37f31271f5c92911aca0fd84c2",
       query: "",
+      error: "",
     };
   },
   methods: {
     search(text) {
-      const query = text;
+      if (text !== "") {
+        this.query = text;
+      }
       axios
-        .get(`${this.API_URL}movie?${this.API_KEY}&query=${query}`)
+        .get(`${this.API_URL}movie?${this.API_KEY}&query=${this.query}`)
         .then((r) => {
           this.movies = r.data.results;
-          console.log(query);
-          console.log(`${this.API_URL}movie?${this.API_KEY}&query=${query}`);
         })
         .catch((e) => {
           console.log(e);
+          this.error = e;
         });
       axios
-        .get(`${this.API_URL}tv?${this.API_KEY}&query=${query}`)
+        .get(`${this.API_URL}tv?${this.API_KEY}&query=${this.query}`)
         .then((r) => {
           this.tvShow = r.data.results;
         })
         .catch((e) => {
           console.log(e);
+          this.error = e;
         });
     },
   },
