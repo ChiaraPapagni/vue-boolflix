@@ -1,10 +1,18 @@
 <template>
   <div class="card">
     <img
+      v-if="item.poster_path"
       :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
       :alt="item.name || item.title"
     />
-    <h3>{{ item.name || item.title }}</h3>
+    <img
+      width="185px"
+      v-else
+      src="../assets/img/not-available.png"
+      alt="image not available"
+    />
+
+    <!--  <h3>{{ item.name || item.title }}</h3>
     <h3>{{ item.original_title || item.original_name }}</h3>
 
     <div class="language">
@@ -23,10 +31,10 @@
       <span v-else>
         <flag :iso="item.original_language" :squared="false" />
       </span>
-    </div>
+    </div> -->
     <!-- /.language -->
 
-    <div class="rating">
+    <!--     <div class="rating">
       <span
         v-for="(vote, i) in Math.ceil(item.vote_average / 2)"
         :key="'fas' + i"
@@ -39,7 +47,7 @@
       >
         <font-awesome-icon :icon="['far', 'star']" />
       </span>
-    </div>
+    </div> -->
     <!-- /.rating -->
   </div>
   <!-- /.card -->
@@ -53,5 +61,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.card {
+  img {
+    height: 280px;
+    padding: 0.2rem;
+  }
+}
 </style>
