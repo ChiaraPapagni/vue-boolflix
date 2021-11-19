@@ -1,19 +1,30 @@
 <template>
   <main id="site_main">
-    <Cards :items="items" />
+    <h2>Movie</h2>
+    <div class="movies" v-for="movie in movies" :key="movie.id">
+      <Card :item="movie" />
+    </div>
+    <!-- /.movies -->
+
+    <h2>TV Show</h2>
+    <div class="tv_show" v-for="tv in tvShow" :key="tv.id">
+      <Card :item="tv" />
+    </div>
+    <!-- /.tv_show -->
   </main>
   <!-- /#site_main -->
 </template>
 
 <script>
-import Cards from "./Cards.vue";
+import Card from "./Card.vue";
 
 export default {
   components: {
-    Cards,
+    Card,
   },
   props: {
-    items: Array,
+    movies: Array,
+    tvShow: Array,
   },
 };
 </script>

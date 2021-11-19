@@ -1,6 +1,6 @@
 <template>
-  <div class="cards">
-    <div class="item" v-for="(item, i) in items" :key="i">
+  <div class="card">
+    <div class="item">
       <img
         :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path"
         :alt="item.name || item.title"
@@ -45,16 +45,16 @@
     </div>
     <!-- ./item -->
   </div>
-  <!-- /.cards -->
+  <!-- /.card -->
 </template>
 
 <script>
 export default {
   props: {
-    items: Array,
+    item: Object,
   },
 };
 </script>
 
-<style lang="scss">
+<style>
 </style>

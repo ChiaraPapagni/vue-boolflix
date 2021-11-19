@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <SiteHeader @search-items="search" />
-    <SiteMain :items="items" />
+    <SiteMain :movies="movies" :tvShow="tvShow" />
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      items: [],
+      movies: [],
+      tvShow: [],
       API_URL: "https://api.themoviedb.org/3/search/",
       API_KEY: "api_key=2424eb37f31271f5c92911aca0fd84c2",
       query: "",
@@ -30,7 +31,7 @@ export default {
       axios
         .get(`${this.API_URL}movie?${this.API_KEY}&query=${query}`)
         .then((r) => {
-          this.items = r.data.results;
+          this.movies = r.data.results;
           console.log(query);
           console.log(`${this.API_URL}movie?${this.API_KEY}&query=${query}`);
         })
@@ -40,7 +41,7 @@ export default {
       axios
         .get(`${this.API_URL}tv?${this.API_KEY}&query=${query}`)
         .then((r) => {
-          this.items = r.data.results;
+          this.tvShow = r.data.results;
         })
         .catch((e) => {
           console.log(e);
