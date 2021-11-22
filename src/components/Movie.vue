@@ -4,7 +4,7 @@
       <img
         v-if="movie.poster_path"
         :src="'https://image.tmdb.org/t/p/w185/' + movie.poster_path"
-        :alt="movie.name || movie.title"
+        :alt="movie.title"
       />
       <img
         v-else
@@ -16,10 +16,10 @@
 
     <div class="info">
       <div class="title">
-        <p><strong>Title:</strong> {{ movie.name || movie.title }}</p>
+        <p><strong>Title:</strong> {{ movie.title }}</p>
         <p>
           <strong>Original title:</strong>
-          {{ movie.original_title || movie.original_name }}
+          {{ movie.original_name }}
         </p>
       </div>
       <!-- /.title -->

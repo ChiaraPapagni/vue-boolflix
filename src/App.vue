@@ -2,7 +2,12 @@
   <div id="app">
     <SiteHeader @search-items="search" />
 
-    <SiteMain :movies="movies" :tvShow="tvShow" />
+    <SiteMain
+      :movies="movies"
+      :tvShow="tvShow"
+      :discoverMovie="discoverMovie"
+      :discoverTv="discoverTv"
+    />
     <div class="error" v-if="error !== ''">{{ error }}</div>
     <!-- /.error -->
   </div>
@@ -27,7 +32,29 @@ export default {
       API_KEY: "api_key=2424eb37f31271f5c92911aca0fd84c2",
       query: "",
       error: "",
+      discoverMovie: [],
+      discoverTv: [],
     };
+  },
+  mounted() {
+    axios
+      .get(`${this.API_URL}/discover/movie?${this.API_KEY}`)
+      .then((r) => {
+        this.discoverMovie = r.data.results;
+      })
+      .catch((e) => {
+        console.log(e);
+        this.error = e;
+      });
+    axios
+      .get(`${this.API_URL}/discover/tv?${this.API_KEY}`)
+      .then((r) => {
+        this.discoverTv = r.data.results;
+      })
+      .catch((e) => {
+        console.log(e);
+        this.error = e;
+      });
   },
   methods: {
     search(text) {

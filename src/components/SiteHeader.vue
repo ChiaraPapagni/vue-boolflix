@@ -27,8 +27,9 @@
         </div>
         <!-- ./search -->
 
-        <font-awesome-icon :icon="['fas', 'bell']" class="icon" />
-        <font-awesome-icon :icon="['fas', 'user']" class="icon" />
+        <font-awesome-icon :icon="['fas', 'bell']" class="bell_icon" />
+        <img src="../assets/img/user-icon.png" alt="user" class="user_image" />
+        <font-awesome-icon :icon="['fas', 'sort-down']" class="arrow_icon" />
       </div>
       <!-- /.right_menu -->
     </nav>
@@ -51,7 +52,7 @@ export default {
 @import "../assets/scss/variables.scss";
 
 header {
-  width: 95%;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 50%;
@@ -60,10 +61,11 @@ header {
   background-color: $netflix_dark_gray;
 
   .navbar {
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.6rem 0;
+    margin: 0.6rem auto;
 
     .left_menu {
       display: flex;
@@ -120,8 +122,15 @@ header {
         }
       }
 
-      .icon {
-        margin-left: 1rem;
+      .bell_icon {
+        margin: 0 1rem;
+      }
+
+      .user_image {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        margin-right: 0.5rem;
       }
     }
   }
