@@ -7,6 +7,8 @@
       :tvShow="tvShow"
       :discoverMovie="discoverMovie"
       :discoverTv="discoverTv"
+      :trendingMovie="trendingMovie"
+      :trendingTv="trendingTv"
     />
     <div class="error" v-if="error !== ''">{{ error }}</div>
     <!-- /.error -->
@@ -34,6 +36,8 @@ export default {
       error: "",
       discoverMovie: [],
       discoverTv: [],
+      trendingMovie: [],
+      trendingTv: [],
     };
   },
   mounted() {
@@ -50,6 +54,24 @@ export default {
       .get(`${this.API_URL}/discover/tv?${this.API_KEY}`)
       .then((r) => {
         this.discoverTv = r.data.results;
+      })
+      .catch((e) => {
+        console.log(e);
+        this.error = e;
+      });
+    axios
+      .get(`${this.API_URL}/trending/movie/week?${this.API_KEY}`)
+      .then((r) => {
+        this.trendingMovie = r.data.results;
+      })
+      .catch((e) => {
+        console.log(e);
+        this.error = e;
+      });
+    axios
+      .get(`${this.API_URL}/trending/tv/week?${this.API_KEY}`)
+      .then((r) => {
+        this.trendingTv = r.data.results;
       })
       .catch((e) => {
         console.log(e);

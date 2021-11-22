@@ -4,14 +4,28 @@
       <h3>Discover new Movies</h3>
       <VueSlickCarousel v-bind="settings" v-if="discoverMovie.length > 0">
         <div v-for="item in discoverMovie" :key="item.id">
-          <Discover :item="item" />
+          <Card :item="item" />
+        </div>
+      </VueSlickCarousel>
+
+      <h3>Trending Movies</h3>
+      <VueSlickCarousel v-bind="settings" v-if="trendingMovie.length > 0">
+        <div v-for="item in trendingMovie" :key="item.id">
+          <Card :item="item" />
         </div>
       </VueSlickCarousel>
 
       <h3>Discover new Tv Show</h3>
       <VueSlickCarousel v-bind="settings" v-if="discoverTv.length > 0">
         <div v-for="item in discoverTv" :key="item.id">
-          <Discover :item="item" />
+          <Card :item="item" />
+        </div>
+      </VueSlickCarousel>
+
+      <h3>Trending Tv Show</h3>
+      <VueSlickCarousel v-bind="settings" v-if="trendingTv.length > 0">
+        <div v-for="item in trendingTv" :key="item.id">
+          <Card :item="item" />
         </div>
       </VueSlickCarousel>
     </div>
@@ -41,7 +55,7 @@
 </template>
 
 <script>
-import Discover from "./Discover.vue";
+import Card from "./Card.vue";
 import Movie from "./Movie.vue";
 import TvShow from "./TvShow.vue";
 
@@ -52,7 +66,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 export default {
   components: {
-    Discover,
+    Card,
     Movie,
     TvShow,
     VueSlickCarousel,
@@ -62,6 +76,8 @@ export default {
     tvShow: Array,
     discoverMovie: Array,
     discoverTv: Array,
+    trendingMovie: Array,
+    trendingTv: Array,
   },
   data() {
     return {
@@ -120,6 +136,7 @@ export default {
             },
           },
         ],
+        rtl: true,
         slidesToShow: 6,
         speed: 1500,
       },
