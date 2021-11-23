@@ -1,6 +1,6 @@
 <template>
   <main id="site_main">
-    <div class="discover">
+    <div class="discover" v-if="movies.length == 0">
       <h3>Discover new Movies</h3>
       <VueSlickCarousel v-bind="settings" v-if="discoverMovie.length > 0">
         <div v-for="item in discoverMovie" :key="item.id">
