@@ -2,8 +2,8 @@
   <div class="card">
     <div class="poster">
       <img
-        v-if="tv.poster_path"
-        :src="'https://image.tmdb.org/t/p/w185/' + tv.poster_path"
+        v-if="tv.backdrop_path"
+        :src="'https://image.tmdb.org/t/p/w500/' + tv.backdrop_path"
         :alt="tv.name"
       />
       <img
@@ -11,20 +11,15 @@
         src="../assets/img/not-available.png"
         alt="image not available"
       />
+      <h3 class="title_on_poster">{{ tv.name }}</h3>
     </div>
     <!-- /.poster -->
 
     <div class="info">
-      <div class="title">
-        <p><strong>Title:</strong> {{ tv.name }}</p>
-        <p>
-          <strong>Original title:</strong>
-          {{ tv.original_name }}
-        </p>
-      </div>
+      <h3 class="title"> {{ tv.name }}</h3>
       <!-- /.title -->
 
-      <div class="language">
+      <!-- <div class="language">
         <span v-if="tv.original_language == 'da'">
           <flag iso="dm" :squared="false" />
         </span>
@@ -40,7 +35,7 @@
         <span v-else>
           <flag :iso="tv.original_language" :squared="false" />
         </span>
-      </div>
+      </div> -->
       <!-- /.language -->
 
       <div class="rating">
@@ -66,10 +61,10 @@
       </div>
       <!-- /.overview -->
 
-      <div class="cast">
+      <!-- <div class="cast">
         <a @click="getCast(tv.id)">Show Cast</a>
         <span v-for="(actor, i) in cast" :key="i"> {{ actor.name }}, </span>
-      </div>
+      </div> -->
       <!-- /.cast -->
     </div>
     <!-- /.info -->
@@ -97,7 +92,7 @@ export default {
   methods: {
     getCast(id) {
       axios
-        .get(`${this.API_URL}tv/${id}/credits?${this.API_KEY}`)
+        .get(`${this.API_URL}tv/${id}?${this.API_KEY}`)
         .then((r) => {
           this.cast = [];
           for (let i = 0; i < 5; i++) {
@@ -113,4 +108,13 @@ export default {
 </script>
 
 <style lang="scss">
+.card {
+  .poster {
+    cursor: pointer;
+  }
+
+  .info {
+    width: calc(320px - 0.4rem) !important;
+  }
+}
 </style>

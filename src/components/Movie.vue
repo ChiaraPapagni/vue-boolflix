@@ -2,8 +2,8 @@
   <div class="card">
     <div class="poster">
       <img
-        v-if="movie.poster_path"
-        :src="'https://image.tmdb.org/t/p/w185/' + movie.poster_path"
+        v-if="movie.backdrop_path"
+        :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path"
         :alt="movie.title"
       />
       <img
@@ -11,20 +11,15 @@
         src="../assets/img/not-available.png"
         alt="image not available"
       />
+      <h3 class="title_on_poster">{{ movie.title }}</h3>
     </div>
     <!-- /.poster -->
 
     <div class="info">
-      <div class="title">
-        <p><strong>Title:</strong> {{ movie.title }}</p>
-        <p>
-          <strong>Original title:</strong>
-          {{ movie.original_name }}
-        </p>
-      </div>
+      <h3 class="title"> {{ movie.title }}</h3>
       <!-- /.title -->
 
-      <div class="language">
+      <!-- <div class="language">
         <span v-if="movie.original_language == 'da'">
           <flag iso="dm" :squared="false" />
         </span>
@@ -40,7 +35,7 @@
         <span v-else>
           <flag :iso="movie.original_language" :squared="false" />
         </span>
-      </div>
+      </div> -->
       <!-- /.language -->
 
       <div class="rating">
@@ -66,10 +61,10 @@
       </div>
       <!-- /.overview -->
 
-      <div class="cast">
+      <!-- <div class="cast">
         <a @click="getCast(movie.id)">Show Cast</a>
         <span v-for="(actor, i) in cast" :key="i"> {{ actor.name }}, </span>
-      </div>
+      </div> -->
       <!-- /.cast -->
     </div>
     <!-- /.info -->
@@ -113,4 +108,13 @@ export default {
 </script>
 
 <style lang="scss">
+.card {
+  .poster {
+    cursor: pointer;
+  }
+
+  .info {
+    width: calc(320px - 0.4rem) !important;
+  }
+}
 </style>

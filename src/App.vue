@@ -10,14 +10,18 @@
       :trendingMovie="trendingMovie"
       :trendingTv="trendingTv"
     />
+
     <div class="error" v-if="error !== ''">{{ error }}</div>
     <!-- /.error -->
+
+    <SiteFooter />
   </div>
 </template>
 
 <script>
 import SiteHeader from "./components/SiteHeader.vue";
 import SiteMain from "./components/SiteMain.vue";
+import SiteFooter from "./components/SiteFooter.vue";
 import axios from "axios";
 
 export default {
@@ -25,6 +29,7 @@ export default {
   components: {
     SiteHeader,
     SiteMain,
+    SiteFooter,
   },
   data() {
     return {

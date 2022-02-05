@@ -11,12 +11,12 @@
         src="../assets/img/not-available.png"
         alt="image not available"
       />
-      <h3 class="title_on_poster">{{ item.title }}</h3>
+      <h3 class="title_on_poster">{{ item.name }}</h3>
     </div>
     <!-- /.poster -->
 
     <div class="info">
-      <h3 class="title"> {{ item.title }}</h3>
+      <h3 class="title">{{ item.name }}</h3>
       <!-- /.title -->
 
       <!-- <div class="language">
@@ -36,7 +36,7 @@
           <flag :iso="item.original_language" :squared="false" />
         </span>
       </div>-->
-      <!-- /.language --> 
+      <!-- /.language -->
 
       <div class="rating">
         <span

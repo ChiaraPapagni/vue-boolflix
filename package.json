@@ -15,6 +15,7 @@
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-css-percentage-circle": "^2.0.0",
     "vue-flag-icon": "^1.0.6",
     "vue-lang-code-flags": "^1.0.13",
     "vue-slick": "^1.1.16",
